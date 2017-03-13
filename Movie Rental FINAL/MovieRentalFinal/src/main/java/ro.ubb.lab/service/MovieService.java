@@ -26,11 +26,11 @@ public class MovieService {
     }
 
     public Set<Movie> getAllMovies(){
-        Iterable<Movie> students = repository.findAll();
-        return StreamSupport.stream(students.spliterator(), false).collect(Collectors.toSet());
+        Iterable<Movie> movies = repository.findAll();
+        return StreamSupport.stream(movies.spliterator(), false).collect(Collectors.toSet());
     }
 
-    //--------Diana:
+
     public Optional<Movie> deleteMovie(Long id) throws IllegalArgumentException
     {
         Optional<Movie> m = repository.delete(id);

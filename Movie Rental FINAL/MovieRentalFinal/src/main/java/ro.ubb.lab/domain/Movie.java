@@ -8,6 +8,8 @@ public class Movie extends BaseEntity<Long>{
     private String name;
     private String genre;
 
+    public Movie() {}
+
     public Movie(String name, String genre) {
         this.name = name;
         this.genre = genre;

@@ -14,7 +14,7 @@ public class Console
 {
     private MovieService movieService;
 
-    public Console(MovieService studentService)
+    public Console(MovieService movieService)
     {
         this.movieService = movieService;
     }
@@ -98,9 +98,7 @@ public class Console
             System.out.println("Give the ID:");
             Long id = Long.valueOf(bufferRead.readLine());
 
-
-
-            System.out.println("Give the name:");
+            System.out.println("Give the name of the movie:");
             String name = bufferRead.readLine();
 
             System.out.println("Give the genre:");

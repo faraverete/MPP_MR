@@ -6,13 +6,11 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import ro.ubb.lab.domain.BaseEntity;
+import ro.ubb.lab.domain.validators.Validator;
 import ro.ubb.lab.domain.validators.ValidatorException;
-import ro.ubb.lab_problems.domain.*;
-import ro.ubb.lab_problems.domain.validators.*;
 
-/**
- * Created by Ela on 3/6/2017.
- */
+
 public class InMemoryRepository<ID, T extends BaseEntity<ID>> implements Repository<ID, T> {
 
     private Map<ID, T> entities;
@@ -43,10 +41,9 @@ public class InMemoryRepository<ID, T extends BaseEntity<ID>> implements Reposit
             throw new IllegalArgumentException("id must not be null");
         }
         validator.validate(entity);
-        return Optional.ofNullable(entities.putIfAbsent(entity.getID(), entity));
+        return Optional.ofNullable(entities.putIfAbsent(entity.getId(), entity));
     }
 
-    //-----Diana:
     @Override
     public Optional<T> delete(ID id) throws IllegalArgumentException
     {
@@ -66,6 +63,6 @@ public class InMemoryRepository<ID, T extends BaseEntity<ID>> implements Reposit
             throw new IllegalArgumentException("Entity can't be null(update).");
         }
         validator.validate(entity);
-        return Optional.ofNullable(entities.computeIfPresent(entity.getID(),(k,v)->entity));
+        return Optional.ofNullable(entities.computeIfPresent(entity.getId(),(k,v)->entity));
     }
 }
