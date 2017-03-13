@@ -14,7 +14,6 @@ public class MovieValidator implements Validator<Movie> {
         Long id = entity.getId();
         String name = entity.getName();
         String genre = entity.getGenre();
-
         if (id == null){
             err += "ID cannot be null ";
 
